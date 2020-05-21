@@ -1,0 +1,43 @@
+.iqr_policy_wrap{position:relative;padding-bottom:6%;border-bottom:1px solid #ebebeb}
+.iqr_tit{width:100%;font-size:1em}
+.iqr_policy{position:relative;margin:2% 0 1%;border:1px solid #ebebeb}
+.iqr_policy > ol{padding:3% 4%}
+.iqr_policy > ol > li{margin-top:2%}
+.iqr_policy > ol > li:first-child{margin-top:0}
+.iqr_check{margin-top:2%}
+.iqr_check:after{content:'';display:block;clear:both}
+.iqr_check > input, .iqr_check > label{display:block;float:left;font-size:0.75em}
+.iqr_check > label{margin-left:5px}
+
+.iqr_info{margin-top:5%}
+.iqr_dot{position:relative;margin-left:10px;padding-left:10px;font-size:0.65em}
+.iqr_dot:before{content:'';position:absolute;left:0;top:40%;width:6px;height:5px;background:url('../img/inquiry_dot.png') no-repeat}
+.iqr_dot > span{font-size:0}
+
+.inquiry_fields{margin-top:2%;border-top:1px solid #ebebeb}
+.inquiry_fields li{padding-bottom:2%;border-bottom:1px solid #ebebeb}
+.inquiry_fields li:after{content:'';display:block;clear:both}
+.field_title{position:relative;font-size:0.8125em;line-height:30px;letter-spacing:-0.05em;color:#666}
+.field_title.required{padding-left:10px}
+.field_title.required:before{content:'';position:absolute;left:0;top:50%;width:6px;height:5px;margin-top:-3px;background:url('../img/inquiry_dot.png') no-repeat}
+.inquiry_fields input[type="text"], .inquiry_fields select{width:100%;height:25px;padding:0 5px;border:1px solid #ebebeb;background-color:#fafaf8;font-size:0.75em;line-height:25px;letter-spacing:-0.05em;color:#444;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+-ms-box-sizing:border-box;
+-o-box-sizing:border-box;
+box-sizing:border-box;
+}
+.email_wrap{height:25px;margin-bottom:2%}
+.inquiry_fields input[type="text"].half_inputs{float:left;width:47%}
+.email_ico{float:left;width:6%;font-size:0.75em;line-height:25px;color:#666;text-align:center}.input_radio label{margin-left:3px;font-size:0.75em;color:#666;line-height:35px;letter-spacing:-0.05em}
+.input_comment{position:relative;padding-right:100px}
+.input_comment .text{position:absolute;right:0;top:0;font-size:0.75em;line-height:25px;color:#7d7b7c}
+.input_radio{float:left;width:50%}
+.input_radio input{font-size:0.75em}
+.inquiry_fields textarea{width:100%;height:80px;padding:5px;border:1px solid #ebebeb;font-size:0.75em;line-height:150%;letter-spacing:-0.05em;color:#444;resize:none;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+-ms-box-sizing:border-box;
+-o-box-sizing:border-box;
+box-sizing:border-box;
+}

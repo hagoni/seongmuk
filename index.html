@@ -1,0 +1,717 @@
+<?
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+define('MAIN_TYPE',													'MAIN',TRUE);
+@include_once														"./view3.php";
+######################################################################################################################################################
+$html_idx = "12";//유저게시판
+######################################################################################################################################################
+$settings_sql = 'SELECT * FROM `'.TABLE_LEFT.'settings` WHERE `key`="info";';
+$settings_query = mysql_query($settings_sql);
+$settings_raw = mysql_fetch_assoc($settings_query);
+$settings_data = unserialize($settings_raw['val']);
+$sitename = htmlentities($settings_data['title'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$description = htmlentities($settings_data['desc'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$keywords = htmlentities($settings_data['keyword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$canonical = htmlentities($settings_data['canonical'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$site_uri = urlencode(PROTOCOL.$_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI]);
+$og_image = $def_og_image;
+######################################################################################################################################################
+$request_root = $root;
+$time = time();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="<?=htmlentities($settings_data['naver_webmastertools_key'], ENT_QUOTES | ENT_IGNORE, "UTF-8");?>">
+<meta name="description" content="<?=$description?>">
+<meta name="keywords" content="<?=$keywords?>">
+<meta name="author" content="">
+<meta property="og:title" content="<?=$sitename?>">
+<meta property="og:url" content="<?=$site_uri?>">
+<meta property="og:description" content="<?=$description?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?=$og_image?>">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?=$sitename?>">
+<meta name="twitter:url" content="<?=$site_uri?>">
+<meta name="twitter:description" content="<?=$description?>">
+<meta name="twitter:image" content="<?=$og_image?>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title><?=$sitename?></title>
+<link rel="canonical" href="<?=$canonical?>">
+<link rel="shortcut icon" href="<?=$root?>/img/favicon.ico">
+<link rel="stylesheet" href="<?=$root?>/css/fullpage.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/board.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/style.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/main.css?<?=$time?>">
+</head>
+<body>
+
+<!-- 건너뛰기 링크 시작 -->
+<dl id="skiptoContent">
+	<dt>바로가기 메뉴</dt>
+	<dd><a href="#navigation" class="skip">네비게이션 바로가기</a></dd>
+	<dd><a href="#content" class="skip">본문 바로가기</a></dd>
+</dl>
+<!-- //건너뛰기 링크 끝 -->
+
+<?php
+include_once('inc/header.php');
+?>
+
+<div id="fullpage" class="fullpage_wrapper">
+	<!-- main_visual start -->
+	<div class="main_visual fp-noscroll rel h100 fp-section section" id="section0" data-index="1">
+		<div class="swiper-container h100">
+			<ul class="swiper-wrapper h100">
+				<li class="swiper-slide mv01 h100" data-swiper-autoplay="7000" motion-index="0">
+					<div class="mv01_bg2 abs bg"></div>
+					<div class="mv01_ovl abs bg"></div>
+					<div class="mv01_bg1 abs bg"></div>
+					<div class="mv01_box_wrap mv_box_wrap abs">
+						<div class="box1 box"><img src="<?=$root?>/img/main/mv01_tri1.png" alt="" class="w100"></div>
+						<div class="flow box">
+							<div class="flow_in"></div>
+						</div>
+						<div class="box2 box"><img src="<?=$root?>/img/main/mv01_tri2.png" alt="" class="w100"></div>
+					</div>
+					<div class="text_area abs">
+						<p class="mv_ttl"><img src="<?=$root?>/img/main/mv01_ttl.png" alt="PEOPLE EXPERT"></p>
+						<p class="mv_sttl">영역을 초월하는 전문성<br></p>
+						<p class="mv_text">준비되셨습니까?<br>당신은 곧 전세계 최고의 플랫폼 회사를 만날 수 있습니다.</p>
+						<ul class="mv_paging fs_def">
+							<li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="swiper-slide mv02 h100" data-swiper-autoplay="7000" motion-index="1">
+					<div class="mv02_bg2 abs bg"></div>
+					<div class="mv02_bg3 abs bg"></div>
+					<div class="mv02_ovl abs bg"></div>
+					<div class="mv02_bg1 abs bg"></div>
+					<div class="mv02_box_wrap mv_box_wrap abs">
+						<div class="box1 box"><img src="<?=$root?>/img/main/mv02_tri1.png" alt="" class="w100"></div>
+						<div class="flow box">
+							<div class="flow_in"></div>
+						</div>
+						<div class="box2 box"><img src="<?=$root?>/img/main/mv02_tri2.png" alt="" class="w100"></div>
+					</div>
+					<div class="text_area abs">
+						<p class="mv_ttl"><img src="<?=$root?>/img/main/mv02_ttl.png" alt="NEW ANSWER"></p>
+						<p class="mv_sttl">새로운 정답을 만들어가는 과정</p>
+						<p class="mv_text">우리가 만들면 최고가 됩니다.<br>명확하고 크리에이티브한 기획력을 가진 인재들이<br>귀하의 비지니스를 성공적으로 이끌어 드립니다.</p>
+						<ul class="mv_paging fs_def">
+							<li><a href="#none"></a></li>
+							<li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="swiper-slide mv03 h100"data-swiper-autoplay="7000" motion-index="2">
+					<div class="mv03_bg1 abs bg"></div>
+					<div class="mv03_bg2 abs bg"></div>
+					<div class="mv03_bg3 abs bg"></div>
+					<div class="mv03_box_wrap mv_box_wrap abs">
+						<div class="box1 box"><img src="<?=$root?>/img/main/mv03_tri1.png" alt="" class="w100"></div>
+						<div class="flow box">
+							<div class="flow_in"></div>
+						</div>
+						<div class="box2 box"><img src="<?=$root?>/img/main/mv03_tri2.png" alt="" class="w100"></div>
+					</div>
+					<div class="text_area abs">
+						<p class="mv_ttl"><img src="<?=$root?>/img/main/mv03_ttl.png" alt="ONE TOPIC"></p>
+						<p class="mv_sttl"><em>모든 것은 하나의 주제가 됩니다.</em></p>
+						<p class="mv_text">우리의 서비스는 볼펜처럼 직관적인 UI와 신발의 기능성,<br>축구공의 가시성을 가지고 있습니다.</p>
+						<ul class="mv_paging fs_def">
+							<li><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+							<li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="swiper-slide mv04 h100" data-swiper-autoplay="7000" motion-index="3">
+					<div class="mv04_bg2 abs bg"></div>
+					<div class="mv04_bg1 abs bg"></div>
+					<div class="mv04_bg3 abs bg"></div>
+					<div class="mv04_ovl abs bg"></div>
+					<div class="mv04_box_wrap mv_box_wrap abs">
+						<div class="box1 box"><img src="<?=$root?>/img/main/mv04_tri1.png" alt="" class="w100"></div>
+						<div class="flow box">
+							<div class="flow_in"></div>
+						</div>
+						<div class="box2 box"><img src="<?=$root?>/img/main/mv04_tri2.png" alt="" class="w100"></div>
+					</div>
+					<div class="text_area abs">
+						<p class="mv_ttl"><img src="<?=$root?>/img/main/mv04_ttl.png" alt="SUCCESSFUL VALUE"></p>
+						<p class="mv_sttl"><em>성공, 그 가치를 나누는 것</em></p>
+						<p class="mv_text">새로운 비전과 혁신을 통해<br>고객에게 새롭고 놀라운 경험을 전달하는 것이,<br>우리가 지향하는 '성공'의 정의입니다.</p>
+						<ul class="mv_paging fs_def">
+							<li><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+							<li><a href="#none"></a></li>
+							<li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mv_scroll l50">
+			<div class="scroll_bar"></div>
+		</div>
+	</div>
+	<!-- //main_visual end -->
+	<!-- brand start -->
+	<div class="brand fp-noscroll rel h100 fp-section section" id="section1" data-index="2">
+		<div class="swiper-container h100">
+			<ul class="swiper-wrapper h100">
+				<li class="swiper-slide rel br4 h100" data-swiper-autoplay="6000" motion-index="0">
+					<a href="#none" class="br4_bi br_bi"><img src="<?=$root?>/img/main/br4_bi.png" alt="" class="w100"></a>
+					<div class="br_clogo abs"><img src="<?=$root?>/img/main/br4_clogo.png" alt="" class="w100"></div>
+					<div class="icons abs">
+						<div class="br4_icon1 icon"><img src="<?=$root?>/img/main/br4_ico1.png" alt="" class="w100"></div>
+						<div class="icon2_1 icon"><img src="<?=$root?>/img/main/br4_ico2_1.png" alt="" class="w100"></div>
+						<div class="icon2_2 icon"><img src="<?=$root?>/img/main/br4_ico2_2.png" alt="" class="w100"></div>
+						<div class="icon3 icon"><img src="<?=$root?>/img/main/br4_ico3.png" alt="" class="w100"></div>
+						<div class="icon4 icon"><img src="<?=$root?>/img/main/br4_ico4.png" alt="" class="w100"></div>
+						<div class="icon5 icon"><img src="<?=$root?>/img/main/br4_ico5.png" alt="" class="w100"></div>
+						<div class="icon6 icon"><img src="<?=$root?>/img/main/br4_ico6.png" alt="" class="w100"></div>
+					</div>
+					<div class="text_area abs">
+						<p class="br_store">PC토랑</p>
+						<p class="br_ttl"><span>PC방 + 레스토랑 = PC토랑</span><br>샵인샵 음식점<br>마켓쉐어 1위!</p>
+					</div>
+					<div class="brin_slide_m brin_slide abs t_center">
+						<div class="swiper-container">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide li1">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br4_li1.png" alt=""></p>
+										<p class="brin_text">8년간 1,300호점<br>가맹점 운영노하우 축적</p>
+									</div>
+								</li>
+								<li class="swiper-slide li2">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br4_li2.png" alt=""></p>
+										<p class="brin_text">누구나 쉽게<br>간편조리가능</p>
+									</div>
+								</li>
+								<li class="swiper-slide li3">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br4_li3.png" alt=""></p>
+										<p class="brin_text">샵인샵 식음료의<br>고급화/전문화/브랜드화</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<ul class="brin_slide_pc brin_slide abs fs_def t_center">
+						<li class="swiper-slide li1">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br4_li1.png" alt=""></p>
+								<p class="brin_text">8년간 1,300호점<br>가맹점 운영노하우 축적</p>
+							</div>
+						</li>
+						<li class="swiper-slide li2">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br4_li2.png" alt=""></p>
+								<p class="brin_text">누구나 쉽게<br>간편조리가능</p>
+							</div>
+						</li>
+						<li class="swiper-slide li3">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br4_li3.png" alt=""></p>
+								<p class="brin_text">샵인샵 식음료의<br>고급화/전문화/브랜드화</p>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li class="swiper-slide rel br3 h100" data-swiper-autoplay="6000" motion-index="1">
+					<a href="#none" class="br3_bi br_bi"><img src="<?=$root?>/img/main/br3_bi.png" alt="" class="w100"></a>
+					<div class="br_clogo abs"><img src="<?=$root?>/img/main/br3_clogo.png" alt="" class="w100"></div>
+					<div class="icons abs">
+						<div class="icon"><img src="<?=$root?>/img/main/br3_ico1.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br3_ico2.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br3_ico3.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br3_ico4.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br3_ico5.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br3_ico6.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br3_ico7.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br3_ico8.png" alt="" class="w100"></div>
+						<div class="icon2 icon"><img src="<?=$root?>/img/main/br3_ico9.png" alt="" class="w100"></div>
+						<div class="icon1 icon"><img src="<?=$root?>/img/main/br3_ico10.png" alt="" class="w100"></div>
+					</div>
+					<div class="text_area abs">
+						<p class="br_store">생생배송 "살아있네"</p>
+						<p class="br_ttl">산지에서<br>새벽에 올라온<br>신선한 식재료를<br>1시간대 배송</p>
+					</div>
+					<div class="brin_slide_m brin_slide abs t_center">
+						<div class="swiper-container">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide li1">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br3_li1.png" alt=""></p>
+										<p class="brin_text">익일배송도 느리다!<br>당일배송, 1시간대 도착</p>
+									</div>
+								</li>
+								<li class="swiper-slide li2">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br3_li2.png" alt=""></p>
+										<p class="brin_text">픽업에서 배송까지 진행<br>신선함이 내 식탁으로</p>
+									</div>
+								</li>
+								<li class="swiper-slide li3">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br3_li3.png" alt=""></p>
+										<p class="brin_text">배송기사 위치<br>실시간 확인가능</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<ul class="brin_slide_pc brin_slide abs fs_def t_center">
+						<li class="swiper-slide li1">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br3_li1.png" alt=""></p>
+								<p class="brin_text">익일배송도 느리다!<br>당일배송, 1시간대 도착</p>
+							</div>
+						</li>
+						<li class="swiper-slide li2">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br3_li2.png" alt=""></p>
+								<p class="brin_text">픽업에서 배송까지 진행<br>신선함이 내 식탁으로</p>
+							</div>
+						</li>
+						<li class="swiper-slide li3">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br3_li3.png" alt=""></p>
+								<p class="brin_text">배송기사 위치<br>실시간 확인가능</p>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li class="swiper-slide rel br2 h100" data-swiper-autoplay="6000" motion-index="2">
+					<a href="#none" class="br2_bi br_bi"><img src="<?=$root?>/img/main/br2_bi.png" alt="" class="w100"></a>
+					<div class="br_clogo abs"><img src="<?=$root?>/img/main/br2_clogo.png" alt="" class="w100"></div>
+					<div class="icons abs">
+						<div class="icon"><img src="<?=$root?>/img/main/br2_ico1.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br2_ico2.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br2_ico3.png" alt="" class="w100"></div>
+						<div class="swiper-container">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide"><img src="<?=$root?>/img/main/br2_ico3_1.png" alt="" class="w100"></li>
+								<li class="swiper-slide"><img src="<?=$root?>/img/main/br2_ico3_2.png" alt="" class="w100"></li>
+								<li class="swiper-slide"><img src="<?=$root?>/img/main/br2_ico3_3.png" alt="" class="w100"></li>
+							</ul>
+						</div>
+						<div class="icon1 icon"><img src="<?=$root?>/img/main/br2_ico4.png" alt="" class="w100"></div>
+					</div>
+					<div class="text_area abs">
+						<p class="br_store">배달토랑</p>
+						<p class="br_ttl">오프라인<br>매장의<br>온라인진화!</p>
+					</div>
+					<div class="brin_slide_m brin_slide abs t_center">
+						<div class="swiper-container">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide li1">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br2_li1.png" alt=""></p>
+										<p class="brin_text">기존 점포 활용으로<br>창업 접근성 용이</p>
+									</div>
+								</li>
+								<li class="swiper-slide li2">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br2_li2.png" alt=""></p>
+										<p class="brin_text">매장 위치 관계없이<br>온라인 홍보만으로 매출 극대화</p>
+									</div>
+								</li>
+								<li class="swiper-slide li3">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br2_li4.png" alt=""></p>
+										<p class="brin_text">배달음식점의<br>단순화, 전문화, 시스템화</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<ul class="brin_slide_pc brin_slide abs fs_def t_center">
+						<li class="swiper-slide li1">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br2_li1.png" alt=""></p>
+								<p class="brin_text">기존 점포 활용으로<br>창업 접근성 용이</p>
+							</div>
+						</li>
+						<li class="swiper-slide li2">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br2_li2.png" alt=""></p>
+								<p class="brin_text">매장 위치 관계없이<br>온라인 홍보만으로 매출 극대화</p>
+							</div>
+						</li>
+						<li class="swiper-slide li3">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br2_li4.png" alt=""></p>
+								<p class="brin_text">배달음식점의<br>단순화, 전문화, 시스템화</p>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li class="swiper-slide rel br1 h100" data-swiper-autoplay="8000" motion-index="3">
+					<a href="#none" class="br1_bi br_bi"><img src="<?=$root?>/img/main/br1_bi.png" alt="" class="w100"></a>
+					<div class="br_clogo abs"><img src="<?=$root?>/img/main/br1_clogo.png" alt="" class="w100"></div>
+					<div class="icons abs">
+						<div class="icon"><img src="<?=$root?>/img/main/br1_ico1.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br1_ico2.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br1_ico3.png" alt="" class="w100"></div>
+						<div class="icon"><img src="<?=$root?>/img/main/br1_ico4.png" alt="" class="w100"></div>
+						<div class="icon2 icon"><img src="<?=$root?>/img/main/br1_ico5.png" alt="" class="w100"></div>
+						<div class="icon1 icon"><img src="<?=$root?>/img/main/br1_ico6.png" alt="" class="w100"></div>
+					</div>
+					<div class="text_area abs">
+						<p class="br_store">퀵퀵</p>
+						<p class="br_ttl">더 빠르고 편리한<br>라스트마일<br>배송플랫폼<br>퀵 매출 1위 브랜드!</p>
+					</div>
+					<div class="brin_slide_m brin_slide abs t_center">
+						<div class="swiper-container">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide li1">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br1_li4.png" alt=""></p>
+										<p class="brin_text">1시간대 리얼타임<br>온라인 배송플랫폼</p>
+									</div>
+								</li>
+								<li class="swiper-slide li2">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br1_li5.png" alt=""></p>
+										<p class="brin_text">픽업에서 배송까지<br>완벽한 풀필먼트 구현</p>
+									</div>
+								</li>
+								<li class="swiper-slide li3">
+									<div class="li_text">
+										<p class="brin_ttl"><img src="<?=$root?>/img/main/br1_li3.png" alt=""></p>
+										<p class="brin_text">고객과 기사를 연결하는<br>자동화 프로세스</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<ul class="brin_slide_pc brin_slide abs fs_def t_center">
+						<li class="swiper-slide li1">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br1_li4.png" alt=""></p>
+								<p class="brin_text">1시간대 리얼타임<br>온라인 배송플랫폼</p>
+							</div>
+						</li>
+						<li class="swiper-slide li2">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br1_li5.png" alt=""></p>
+								<p class="brin_text">픽업에서 배송까지<br>완벽한 풀필먼트 구현</p>
+							</div>
+						</li>
+						<li class="swiper-slide li3">
+							<div class="li_text">
+								<p class="brin_ttl"><img src="<?=$root?>/img/main/br1_li3.png" alt=""></p>
+								<p class="brin_text">고객과 기사를 연결하는<br>자동화 프로세스</p>
+							</div>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<ul class="br_paging abs">
+			<li class="swiper-pagination-bullet-active"><a href="#none">01</a></li>
+			<li><a href="#none">02</a></li>
+			<li><a href="#none">03</a></li>
+			<li><a href="#none">04</a></li>
+		</ul>
+	</div>
+	<!-- //brand end -->
+	<!-- history start -->
+	<div class="history fp-noscroll rel h100 fp-section section" id="section2" data-index="3">
+		<p class="hist_line t50"><img src="<?=$root?>/img/main/hist_line.png" alt="since 2010 seongmuk"></p>
+		<p class="hist_ttl t50"><img src="<?=$root?>/img/main/hist_ttl.png" alt="since 2010 just one way seongmuk"></p>
+		<div class="hist_slide abs">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide">
+                        <p class="year"><img src="<?=$root?>/img/main/hist_y2020.png" alt="20"></p>
+                        <ul class="month_list">
+                            <li class="fs_def">
+                                <p class="month">01</p>
+                                <p class="month_text">모델+레스토랑 "모텔토랑"런칭<br>샵인샵 1300호점 돌파</p>
+                            </li>
+                            <li class="fs_def">
+                                <p class="month">02</p>
+                                <p class="month_text">PC토랑 가맹점 1,300호점 돌파</p>
+                            </li>
+                            <li class="fs_def">
+                                <p class="month">04</p>
+                                <p class="month_text">배달토랑 출시<br>앵그리버거, 핑거돈까스, 뺑덕네빨간오뎅, <br>요괴떡볶이 메뉴 30여종 출시</p>
+                            </li>
+                        </ul>
+                    </li>
+					<li class="swiper-slide">
+                        <p class="year"><img src="<?=$root?>/img/main/hist_y2019.png" alt="19"></p>
+                        <ul class="month_list">
+                            <li class="fs_def">
+                                <p class="month">12</p>
+                                <p class="month_text">샵인샵 가맹점 1,000호점 돌파<br>배달전문 "핑거돈까스" 출시<br>라스트마일 전문기업 딜리버리러쉬 흡수합병</p>
+                            </li>
+                        </ul>
+                    </li>
+					<li class="swiper-slide">
+						<p class="year"><img src="<?=$root?>/img/main/hist_y2018.png" alt="18"></p>
+						<ul class="month_list">
+							<li class="fs_def">
+								<p class="month">03</p>
+								<p class="month_text">샵인샵 식음료 공급 연 100억 돌파</p>
+							</li>
+						</ul>
+					</li>
+					<li class="swiper-slide">
+						<p class="year"><img src="<?=$root?>/img/main/hist_y2017.png" alt="17"></p>
+						<ul class="month_list">
+							<li class="fs_def">
+								<p class="month">05</p>
+								<p class="month_text">PC토랑 가맹점 500호점 돌파</p>
+							</li>
+							<li class="fs_def">
+								<p class="month">09</p>
+								<p class="month_text">매운수제버거 "맵스벅" 출시</p>
+							</li>
+						</ul>
+					</li>
+					<li class="swiper-slide">
+						<p class="year"><img src="<?=$root?>/img/main/hist_y2016.png" alt="16"></p>
+						<ul class="month_list">
+							<li class="fs_def">
+								<p class="month">01</p>
+								<p class="month_text">PC방 + 레스토랑 ‘PC토랑’ 브랜드 런칭</p>
+							</li>
+							<li class="fs_def">
+								<p class="month">11</p>
+								<p class="month_text">국수&amp;돈까스 "후룩까스" 출시</p>
+							</li>
+						</ul>
+					</li>
+					<li class="swiper-slide">
+						<p class="year"><img src="<?=$root?>/img/main/hist_y2014.png" alt="14"></p>
+						<div class="month_list_wrap fs_def">
+							<ul class="month_list1 month_list">
+								<li class="fs_def">
+									<p class="month">01</p>
+									<p class="month_text">돈까스&amp;떡볶이 "돈떡" 출시</p>
+								</li>
+								<li class="fs_def">
+									<p class="month">04</p>
+									<p class="month_text">푸드트럭형 분식 "뺑덕네푸드트럭" 출시</p>
+								</li>
+								<li class="fs_def">
+									<p class="month">05</p>
+									<p class="month_text">기가바이트 미니 PC "BRIX" 공식리셀러</p>
+								</li>
+								<li class="fs_def">
+									<p class="month">06</p>
+									<p class="month_text">디스크리스 솔루션 "로컬클라우드" 런칭</p>
+								</li>
+								<li class="fs_def">
+									<p class="month">07</p>
+									<p class="month_text">기술혁신형 중소기업 이노비즈 인증</p>
+								</li>
+							</ul>
+							<ul class="month_list">
+								<li class="fs_def">
+									<p class="month">08</p>
+									<p class="month_text">브릭스 학교우수상품 선정</p>
+								</li>
+								<li class="fs_def">
+									<p class="month">09</p>
+									<p class="month_text">건국대학교 솔루션 / 시스템 납품</p>
+								</li>
+								<li class="fs_def">
+									<p class="month">11</p>
+									<p class="month_text">로컬클라우드 소프트웨어 GS인증 획득</p>
+								</li>
+								<li class="fs_def">
+									<p class="month">12</p>
+									<p class="month_text">경찰대학교 솔루션 / 시스템 납품</p>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="swiper-slide">
+						<p class="year"><img src="<?=$root?>/img/main/hist_y2013.png" alt="13"></p>
+						<ul class="month_list">
+							<li class="fs_def">
+								<p class="month">07</p>
+								<p class="month_text">기업부설연구소 설립<br>ISO 9001 품질경영시스템 인증<br>ISO 14001 환경경영체제 인증</p>
+							</li>
+							<li class="fs_def">
+								<p class="month">09</p>
+								<p class="month_text">벤처기업 인증</p>
+							</li>
+						</ul>
+					</li>
+					<li class="swiper-slide">
+						<p class="year"><img src="<?=$root?>/img/main/hist_y2012.png" alt="12"></p>
+						<ul class="month_list">
+							<li class="fs_def">
+								<p class="month_text">PC방+레스토랑 "PC토랑" 출시, <br>BHC치킨, 찡오랑 파트너십체결</p>
+							</li>
+						</ul>
+					</li>
+					<li class="swiper-slide">
+						<p class="year"><img src="<?=$root?>/img/main/hist_y2010.png" alt="10"></p>
+						<ul class="month_list">
+							<li class="fs_def">
+								<p class="month">11</p>
+								<p class="month_text">(주)성묵 법인설립</p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //history end -->
+	<!-- news start -->
+<?
+$news_sql = "select * from ".TABLE_LEFT."notice_01 where view3_use = 1 order by view3_order desc, view3_write_day desc limit 3";
+$news_res = mysql_query($news_sql);
+while ($news_lst = mysql_fetch_assoc($news_res)) {
+	$data[] = array(
+		"idx" => $news_lst['view3_idx'],
+		"date" => $news_lst['view3_write_day'],
+		"type" => "news",
+		"link" => "",
+		"cont" => $news_lst['view3_command_01'],
+		"title" => $news_lst['view3_title_01'],
+	);
+}
+
+$sns_sql = "select * from ".TABLE_LEFT."sns where view3_use = 1 and view3_target = 'news' order by view3_order desc,view3_pubdate desc limit 3";
+$sns_res = mysql_query($sns_sql);
+while ($sns_lst = mysql_fetch_assoc($sns_res)) {
+	$data[] = array(
+		"idx" => $sns_lst['view3_idx'],
+		"date" => $sns_lst['view3_pubdate'],
+		"type" => "sns",
+		"link" => $sns_lst['view3_link'],
+		"cont" => $sns_lst['view3_description'],
+		"title" => $sns_lst['view3_title'],
+	);
+}
+
+foreach ($data as $key => $value) {
+	$sort_data[$key] = $value['date'];
+}
+
+array_multisort($sort_data, SORT_DESC, $data);
+?>
+	<div class="news fp-noscroll rel h100 fp-section section" id="section3" data-index="4">
+		<div class="news_line t50"><img src="<?=$root?>/img/main/news_line.png" alt=""></div>
+		<div class="v_mid">
+			<ul class="news_list">
+				<?for ($i=0; $i < 3; $i++) {
+					if ($data[$i]['type'] == 'news') {
+						$txt = "NEWS";
+						$tag = "<a href='".BOARD."/index.php?board=notice_01&type=view&idx={$data[$i]['idx']}&skin=notice_00&modal=1' class='bindContentsModalOpen news_link'>".strip_tags(view3_html($data[$i]['title']))."</a>";
+					} else if ($data[$i]['type'] == 'sns') {
+						$txt = "MEDIA";
+						$tag = "<a href='{$data[$i]['link']}' target='_blank' class='news_link'>".view3_html($data[$i]['title'])."</a>";
+					}
+					$cls = "";
+					if ($i==2) {
+						$cls = "news_03";
+					}
+				?>
+				<li class="on <?=$cls?>">
+					<div class="news_box"><?=$txt?></div>
+					<?=$tag?>
+					<!-- <a href="#none" class="news_link">작년 PC방 매출 2조 넘어... 맛집+PC방 = 'PC토랑'이 살렸다 작년 PC방 매출 2조 넘어... 맛집+PC방 = 'PC토랑'이 살렸다 </a> -->
+				</li>
+				<?}?>
+				<!-- <li>
+					<div class="news_box">NEWS</div>
+					<a href="#none" class="news_link">작년 PC방 매출 2조 넘어... 맛집+PC방 = 'PC토랑'이 살렸다 작년 PC방 매출 2조 넘어... 맛집+PC방 = 'PC토랑'이 살렸다 </a>
+				</li>
+				<li>
+					<div class="news_box">MEDIA</div>
+					<a href="#none" class="news_link">작년 PC방 매출 2조 넘어... 맛집+PC방 = 'PC토랑'이 살렸다 작년 PC방 매출 2조 넘어... 맛집+PC방 = 'PC토랑'이 살렸다 </a>
+				</li> -->
+			</ul>
+			<div class="recruit_box">
+				<a href="#none">
+					<div class="text_box">
+						<p class="recruit_ttl">유능하고 참신한 인재를 채용합니다</p>
+						<p class="recruit_text">여러분의 도전이 미래의 성묵을 만듭니다.<br>(주)성묵은 패기있고 도전정신있는 인재를 환영합니다.</p>
+					</div>
+					<div class="img_box" style="background-image:url('img/main/news_img.jpg')"></div>
+				</a>
+			</div>
+		</div>
+<?php
+include_once('inc/footer.php');
+?>
+	</div>
+	<!-- //news end -->
+</div>
+<?php
+include_once('inc/sitemap.php');
+?>
+
+<script>
+var CONST_REQUEST_ROOT = '<?=$request_root?>';
+var CONST_ROOT = '<?=$root?>';
+var CONST_SITENAME = '<?=str_replace(' ', '', $sitename)?>';
+</script>
+<script src="<?=$root?>/js/jquery-1.12.0.min.js"></script>
+<script src="<?=$root?>/freebest/inquiry.js"></script>
+<script src="<?=$root?>/js/scrolloverflow.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/fullpage.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/YMotion.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/SwiperBannerMotion.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/common.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/ContentsModal.js?<?=$time?>"></script>
+<script src="<?=BOARD?>/view3_sns_00/js/SnsModal.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/main.js?<?=$time?>"></script>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+@include_once(BOARD_INC.'/view3_popup_03/list.php');
+@include_once(BOARD_INC.'/view3_popup_04/list.php');
+?>
+<script>
+(function($) {
+	$(document).ready(function() {
+		function popupCallback() {
+			setTimeout(function() {
+				fullPageMotion.activate();
+			}, 400);
+		}
+		new Popup('type02', {
+			callback: popupCallback
+		});
+		new Popup('type03', {
+			callback: popupCallback
+		});
+		new Popup('type04', {
+			callback: popupCallback
+		});
+	});
+}(jQuery));
+</script>
+<?
+@include_once(ROOT_INC.'/statistics_include.php');
+?>
+
+</body>
+</html>

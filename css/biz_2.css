@@ -1,0 +1,8 @@
+.layer2 .sc_ttl{font-size:1.25rem}
+.layer2 .sc_ttl span{font-size:1.0625rem}
+@media screen and (min-width:768px){
+    .layer2 .sc_ttl span{font-size:1.875rem}
+}
+@media screen and (min-width:1080px){
+    .layer2 .sc_ttl{text-align:left}
+}

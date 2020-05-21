@@ -1,0 +1,38 @@
+html,body,#wrap{height:100%}
+body{background-color:#e5e5e5}
+
+.blk .depth1_ul .depth1_a{color:#222}
+@media screen and (min-width:1080px){
+    .depth1_ul{position:absolute}
+}
+
+/* text */
+.title{font-family:'Recipekorea';font-size:1.5625rem;line-height:140%;letter-spacing:-0.03em;color:#000;text-align:center}
+.stitle{font-family:'Recipekorea';font-size:1.375rem;line-height:150%}
+.text{font-size:0.75rem;letter-spacing:-0.03em;line-height:167%;color:#444}
+@media screen and (min-width:768px){
+    .title{font-size:3.75rem}
+    .stitle{font-size:2.375rem}
+    .text{font-size:1.0625rem}
+}
+.br_768{display:none}
+.br_1080{display:none}
+
+@media screen and (min-width:768px){
+    .br_768{display:block}
+}
+@media screen and (min-width:1080px){
+    .br_768.br_1080n{display:none}
+    .br_m.br_1080{display:block}
+    .br_1080{display:block}
+    .br_1080n{display:none}
+}
+@media screen and (min-width:1260px){
+    .br_1080.br_1260n{display:none}
+}
+
+.footer_wrap{position:relative}
+.footer_wrap .footer{padding-top:12px}
+@media screen and (min-width:768px){
+    .footer_wrap .footer{padding-top:46px}
+}

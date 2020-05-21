@@ -1,0 +1,9 @@
+.board_list_title{width:80%}
+.board_list_text{width:90%}
+.board_list_text > p{margin-right:0}
+#boardWrap{padding-top:120px}
+
+@media screen and (min-width:768px){
+    #boardWrap{padding-top:257px}
+    .title{padding-bottom:50px}
+}
